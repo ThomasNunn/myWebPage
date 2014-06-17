@@ -4,11 +4,48 @@
    Author's custom styles
    ========================================================================== */
 
+body {
+    background: #460a8e !important;
+    color: #f4e71f;
+}
+
+.dropdown-menu li a {
+    color: #0c0c00 !important;
+    // #0c0c00 is the navbar inverse black color
+}
+
+.footer-main {
+    position: fixed;
+    bottom: 0px;
+}
+
+.jumbotron h1 {
+    text-shadow: 1px 1px 1px #f4e71f;
+}
+
+.jumbotron-main {
+    color: #460a8e;
+}
+
+.jumbotron-main img {
+    vertical-align: middle;
+    width: 12%;
+    float: right;
+}
+
+.navbar a {
+    color: #f4e71f !important;
+}
 
 
+.navbar-custom {
+    background: #460a8e;
+}
 
+.navbar-custom a:hover {
+    color: #ff0033 !important;
 
-
+}
 
 
 

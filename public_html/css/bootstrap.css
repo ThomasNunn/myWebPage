@@ -277,7 +277,8 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  //background-color: #fff;
+  background-color: #6600ff;
 }
 input,
 button,
@@ -533,7 +534,8 @@ a.text-danger:hover {
 }
 .bg-primary {
   color: #fff;
-  background-color: #428bca;
+  //background-color: #428bca;
+  background-color: #6600ff;
 }
 a.bg-primary:hover {
   background-color: #3071a9;
