@@ -9,6 +9,13 @@ body {
     color: #f4e71f;
 }
 
+.canvasCustom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
 .dropdown-menu li a {
     color: #0c0c00 !important;
     // #0c0c00 is the navbar inverse black color
@@ -17,6 +24,22 @@ body {
 .footer-main {
     position: fixed;
     bottom: 0px;
+}
+
+.img-crawler {
+    width: 15em;
+    height: 12em;
+}
+
+.img-tetris {
+    width: 12em;
+    height: 15em;
+}
+
+.jarIcon {
+    width: 15em;
+    height: 6em;
+    border: 1px solid blue;
 }
 
 .jumbotron h1 {
@@ -31,6 +54,27 @@ body {
     vertical-align: middle;
     width: 12%;
     float: right;
+}
+
+.list-group-item h2 {
+    color: purple;
+}
+
+.list-group-item img {
+/*    width: 12em;
+    height: 15em;*/
+
+/*    display: inline;
+    max-width:30em;
+    max-height:36em;
+    width: auto;
+    height: auto;*/
+}
+
+.list-group-item img:hover {
+/*    width: 30%;
+    height: 30%;
+    overflow:visible;*/
 }
 
 .navbar a {
