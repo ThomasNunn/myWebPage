@@ -51,36 +51,15 @@ body {
 }
 
 .jumbotron-main img {
-    vertical-align: middle;
-    width: 12%;
-    float: right;
-}
-
-.list-group-item h2 {
-    color: purple;
-}
-
-.list-group-item img {
-/*    width: 12em;
-    height: 15em;*/
-
-/*    display: inline;
-    max-width:30em;
-    max-height:36em;
-    width: auto;
-    height: auto;*/
-}
-
-.list-group-item img:hover {
-/*    width: 30%;
-    height: 30%;
-    overflow:visible;*/
+    width: 15%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .navbar a {
     color: #f4e71f !important;
 }
-
 
 .navbar-custom {
     background: #460a8e;
