@@ -1,5 +1,8 @@
 var cur;
 var curImg;
+var table;
+var divIdent;
+var clickCount = 0;
 tetrisPics = new Array();
 crawlPics = new Array();
 wordPics = new Array();
@@ -78,148 +81,20 @@ wordPics.push(word0, word1, word2, word3, word4);
 arrPicArrs = {tetris: tetrisPics, crawl: crawlPics, word: wordPics};
 
 
-function imgPopUp(source) {
-    var screenHeight = window.screen.height;
-    var windowParams = "";
-    if (screenHeight <= 202) {
-        windowParams = 'width=180,height=180,toolbar=0,menubar=0,location=0,\n\
-status=1,scrollbars=1,resizable=1,left=0,top=0';
-    } else if (screenHeight > 202 && screenHeight <= 352) {
-        windowParams = 'width=330,height=330,toolbar=0,menubar=0,location=0,\n\
-status=1,scrollbars=1,resizable=1,left=0,top=0';
-    } else if (screenHeight > 352 && screenHeight <= 548) {
-        windowParams = 'width=526,height=526,toolbar=0,menubar=0,location=0,\n\
-status=1,scrollbars=1,resizable=1,left=0,top=0';
-    } else {
-        windowParams = 'width=740,height=740,toolbar=0,menubar=0,location=0,\n\
-status=1,scrollbars=1,resizable=1,left=0,top=0';
-    }   
-    void window.open(source,'_blank', windowParams);
-    return false;
-}
-
-//function imgSlider(projectName, idx) {
-//    index = idx;
-//    cur = arrPicArrs[projectName][index];
-//    var curWidth = cur.width;
-//    var curHeight = cur.height;
-//    var sliderWindow = open("", "Slider", "width="+curWidth+",height="+curHeight+"location=no,menubar=no");
-//    sliderWindow.document.title = "Project Picture Slider";
-//    curImg = sliderWindow.document.createElement("img");
-//    curImg.src = cur.src;
-//    var curStyle = curImg.style;
-//    curStyle.position = 'absolute';
-//    curStyle.top = 0;
-//    curStyle.left = 0;    
-//    sliderWindow.document.body.appendChild(curImg);
-//
-//    var rightButton = sliderWindow.document.createElement("input");
-//    rightButton.type = "image";
-//    rightButton.src = rArrow.src;
-//    var rbStyle = rightButton.style;
-//    rbStyle.position = 'absolute';
-//    rbStyle.top = curHeight/2 - (rArrow.height/2);
-//    rbStyle.left = curWidth-(rArrow.width);
-//    rightButton.onclick = nextPic;
-//    sliderWindow.document.body.appendChild(rightButton);
-//    
-//    var leftButton = sliderWindow.document.createElement("input");
-//    leftButton.type = "image";
-//    leftButton.src = lArrow.src;
-//    var lbStyle = leftButton.style;
-//    lbStyle.position = 'absolute';
-//    lbStyle.top = curHeight/2 - (lArrow.height/2);
-//    lbStyle.left = 0;
-//    leftButton.onclick = prevPic;
-//    sliderWindow.document.body.appendChild(leftButton);
-//    
-//    function nextPic() {
-//        index++;
-//        if (index > 4) {
-//            index = 0;
-//        }
-//        cur = arrPicArrs[projectName][index];
-//        curImg.src = cur.src;
-//    };
-//    
-//    function prevPic() {
-//        index--;
-//        if (index < 0) {
-//            index = 4;
-//        }
-//        cur = arrPicArrs[projectName][index];
-//        curImg.src = cur.src;
-//    };
-//}
-
-//function imgSlider(projectName, idx) {
-//    index = idx;
-//    cur = arrPicArrs[projectName][index];
-//    var curWidth = cur.width;
-//    var curHeight = cur.height;
-//    var screenHeight = window.screen.height;
-//    var screenWidth = window.screen.width;
-//    
-//    curImg = document.createElement("img");
-//    curImg.src = cur.src;
-//    var curStyle = curImg.style;
-//    curStyle.position = 'absolute';
-//    curStyle.top = 0;
-//    curStyle.left = 0;    
-//    sliderDiv.appendChild(curImg);
-//
-//    var rightButton = document.createElement("input");
-//    rightButton.type = "image";
-//    rightButton.src = rArrow.src;
-//    var rbStyle = rightButton.style;
-//    rbStyle.position = 'absolute';
-//    rbStyle.top = curHeight/2 - (rArrow.height/2);
-//    rbStyle.left = curWidth-(rArrow.width);
-//    rightButton.onclick = nextPic;
-//    sliderDiv.appendChild(rightButton);
-//    
-//    var leftButton = document.createElement("input");
-//    leftButton.type = "image";
-//    leftButton.src = lArrow.src;
-//    var lbStyle = leftButton.style;
-//    lbStyle.position = 'absolute';
-//    lbStyle.top = curHeight/2 - (lArrow.height/2);
-//    lbStyle.left = 0;
-//    leftButton.onclick = prevPic;
-//    sliderDiv.appendChild(leftButton);
-//    
-//    function nextPic() {
-//        index++;
-//        if (index > 4) {
-//            index = 0;
-//        }
-//        cur = arrPicArrs[projectName][index];
-//        curImg.src = cur.src;
-//    };
-//    
-//    function prevPic() {
-//        index--;
-//        if (index < 0) {
-//            index = 4;
-//        }
-//        cur = arrPicArrs[projectName][index];
-//        curImg.src = cur.src;
-//    };
-//}
-
-
 
 function OpenSliderPopup(projectName, idx) {
-    var divToOpen = "sliderDiv";
-//            var popupSetting = { width: '250', height: '130', title: 'Project Picture Slider',isFixed:true };
+    
+    var slider = document.createElement('div');
+    var sliderID = "sliderDiv";
+    slider.setAttribute('id', sliderID);
+    document.body.appendChild(slider);
     var popupSetting = {title: 'Project Picture Slider',isFixed:true };
-
-    ShowPopup(divToOpen, popupSetting, projectName, idx);
+    ShowPopup(sliderID, popupSetting, projectName, idx);
 }
 
 // Function to Show Div Popup
 function ShowPopup(divId, popupSetting, projectName, idx) {
-
+    divIdent = divId;
     index = idx;
     cur = arrPicArrs[projectName][index];
     var curWidth = cur.width;
@@ -231,7 +106,6 @@ function ShowPopup(divId, popupSetting, projectName, idx) {
     var popUpLeft = screenWidth/2;
 
     var sliderDiv = document.getElementById(divId);
-    //sliderDiv.setAttribute('style', 'display: block; position: fixed; top: 0; left: 0; border:3px solid yellow; z-index: 18;');
     sliderDiv.style.display = 'block';
     sliderDiv.style.position = 'relative';
     var element = sliderDiv.parentElement;
@@ -241,27 +115,8 @@ function ShowPopup(divId, popupSetting, projectName, idx) {
     if (!popupSetting.height) { popupSetting.height = curHeight; };
     if (!popupSetting.title) { popupSetting.title = 'Project Picture Slider'; };
 
-    var table = document.createElement('div');
-//    var table = document.createElement('table');
-//    table.setAttribute('id', 'table' + divId);
-//    table.setAttribute('cellspacing', '2');
-//    table.setAttribute('cellpadding', '2');
-//
-//    var tr1 = document.createElement('tr'); tr1.className = 'PopupHeader';
-//    var td1 = document.createElement('td'); td1.setAttribute('style', 'width: 90%; padding: 5px;');
-//    var span = document.createElement('span'); span.innerHTML = popupSetting.title;
-//    span.setAttribute('style', 'font-size: 14px; font-weight: bold; border:1px solid black');
-//    td1.appendChild(span); tr1.appendChild(td1); table.appendChild(tr1);
-//
-//    var tr2 = document.createElement('tr');
-//    var tdDynamic = document.createElement('td');
-//    tdDynamic.setAttribute('align', 'center');
-//    tdDynamic.setAttribute('style', 'padding-top: 10px; vertical-align:top; position: relative; border:1px solid black');
-//
-//    var tr3 = document.createElement('tr');
-//    var tdCloseButton = document.createElement('td');
-//    tdCloseButton.setAttribute('align', 'center');
-//    tdCloseButton.setAttribute('style', 'padding-top: 10px; vertical-align:top; border:1px solid black');
+    table = document.createElement('div');
+    table.setAttribute('id', 'table' + divId);
 
     curImg = document.createElement("img");
     curImg.src = cur.src;
@@ -269,7 +124,6 @@ function ShowPopup(divId, popupSetting, projectName, idx) {
     curStyle.position = 'relative';
     curStyle.top = 0;
     curStyle.left = 0;    
-    
 
     var rightButton = document.createElement("input");
     rightButton.type = "image";
@@ -293,19 +147,12 @@ function ShowPopup(divId, popupSetting, projectName, idx) {
     lbStyle.opacity = .6;
     leftButton.onclick = prevPic;
 
-
-
-
     var closeButton = document.createElement("input");
     closeButton.type = "button";
     closeButton.value = "close";
     var cbStyle = closeButton.style;
-//    cbStyle.position = 'absolute';
-//    cbStyle.top = curHeight;
-//    cbStyle.left = 200;
     cbStyle.color = "red";
     closeButton.onclick = ClosePopupDiv;
-    //sliderDiv.appendChild(closeButton);
 
     function nextPic() {
     index++;
@@ -326,7 +173,7 @@ function ShowPopup(divId, popupSetting, projectName, idx) {
     };
 
 
-    var tempElt = document.createElement('div');
+    tempElt = document.createElement('div');
     tempElt.setAttribute('id', 'tempElt' + sliderDiv.id);
     sliderDiv.parentElement.insertBefore(tempElt, sliderDiv);
 
@@ -335,20 +182,6 @@ function ShowPopup(divId, popupSetting, projectName, idx) {
     sliderDiv.appendChild(leftButton);
     sliderDiv.appendChild(rightButton);
     table.appendChild(sliderDiv);
-    
-    
-    
-//    tdDynamic.appendChild(leftButton);
-//    tdDynamic.appendChild(rightButton);
-//    tdDynamic.appendChild(sliderDiv);
-//
-//    tr2.appendChild(tdDynamic);
-//    table.appendChild(tr2);
-//    
-//    tdCloseButton.appendChild(closeButton);
-//    tr3.appendChild(tdCloseButton);
-//    table.appendChild(tr3);
-    
 
 
     var cssText = 'display: block; z-index:12; background-color:white; top:'+popUpTop+'px; left:'+popUpLeft+'px;';
@@ -366,24 +199,42 @@ function ShowPopup(divId, popupSetting, projectName, idx) {
     element.appendChild(table);
 
     var shadeElt = document.createElement('div');
-    shadeElt.id = "ShadedBG";shadeElt.className = "ShadedBG";
+    shadeElt.id = "ShadedBG";
+    shadeElt.className = "ShadedBG";
     tempElt.appendChild(shadeElt);
-
-
-    // Function to Close Div Popup
-    function ClosePopupDiv() {
-        var table = document.getElementById('table' + divId);
-        var element = table.parentElement;
-        var sliderDiv = document.getElementById(divId);
-        sliderDiv.style.display = 'none';
-        var tempElt = document.getElementById('tempElt' + divId);
-        tempElt.parentElement.insertBefore(sliderDiv, tempElt);
-        table.parentElement.removeChild(table);
-        table.setAttribute('style', 'display: none');
-        tempElt.parentElement.removeChild(tempElt);
-    }
 }
 
- 
+/*
+ * Closes the popup picture slider and removes it's elements
+ * from the DOM tree.
+ * 
+ * @returns {undefined}
+ */
+function ClosePopupDiv() {
+    table.parentNode.removeChild(table);
+    tempElt.parentNode.removeChild(tempElt);
+    clickCount = 0;
+};
 
+/*
+ * Detects mouse clicks and calls ClosePopupDiv() when the popup picture slider
+ * is active and a click occurs outside the slider.
+ */
+document.onclick = function(event){
+    clickCount++;
+    var hasParent = false;
+
+    for(var node = event.target; node !== document.body; node = node.parentNode) {
+      if(node.id === ('tempElt' + divIdent)){
+        hasParent = true;
+        break;
+      }
+    }
+
+    if(!hasParent) {
+        return;
+    } else {
+        if (clickCount > 1) ClosePopupDiv();
+    }
+}; 
     

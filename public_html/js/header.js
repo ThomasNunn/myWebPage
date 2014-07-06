@@ -15,6 +15,7 @@ document.write(
 "        </style>"+
 "        <link rel='stylesheet' href='css/bootstrap-theme.min.css'>"+
 "        <link rel='stylesheet' href='css/main.css'>"+
+"        <script src='js/main.js'></script>"+
 "        <script src='http://code.jquery.com/jquery-2.1.1.js'></script>"+
 "        <script src='js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'></script>"        
         );

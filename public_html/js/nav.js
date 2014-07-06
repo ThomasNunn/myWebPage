@@ -1,6 +1,6 @@
 
 document.write(
-"    <nav class='navbar navbar-inverse navbar-fixed-top navbar-custom' role='navigation'>"+
+"    <nav class='navbar navbar-inverse navbar-custom' role='navigation'>"+
 "        <!-- Brand and toggle get grouped for better mobile display -->"+
 "        <div class='container'>"+
 "            <div class='navbar-header'>"+
@@ -21,11 +21,11 @@ document.write(
 "                    <li class='dropdown'>"+
 "                        <a href='projects.html' data-toggle='dropdown' class='dropdown-toggle'>Projects <b class='caret'></b></a>"+
 "                        <ul class='dropdown-menu'>"+
-"                            <li><a href='#'>Java </a></li>"+
-"                            <li><a href='#'>C# </a></li>"+
-"                            <li><a href='#'>Javascript </a></li>"+
+"                            <li><a href='projects.html#Java'>Java </a></li>"+
+"                            <li><a href='projects.html#CSharp'>C# </a></li>"+
+"                            <li><a href='projects.html#HTML'>Javascript </a></li>"+
 "                            <li class='divider'></li>"+
-"                            <li><a href='#'>Other </a></li>"+
+"                            <li><a href='projects.html#Other'>Other </a></li>"+
 "                        </ul>"+
 "                    </li>"+
 "                    <li><a href='#'>Knowledge</a></li>"+
